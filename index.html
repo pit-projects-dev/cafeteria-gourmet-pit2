@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Gourmet — Pedidos Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">☕ Cafeteria Gourmet</div>
+        <nav>
+            <a href="#menu">Cardápio</a>
+            <a href="#admin">Painel Lojista</a>
+            <div class="cart-icon" onclick="openCart()">
+                🛒 Carrinho (<span id="cart-count">0</span>)
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Sua experiência gourmet a um clique</h1>
+        <p>Escolha seus cafés, doces e salgados favoritos e receba com agilidade!</p>
+    </section>
+
+    <main class="container" id="menu">
+        <h2>Cardápio Gourmet</h2>
+        
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterCategory('todos')">Todos</button>
+            <button class="filter-btn" onclick="filterCategory('cafes')">Cafés Especialidades</button>
+            <button class="filter-btn" onclick="filterCategory('doces')">Doces & Tortas</button>
+            <button class="filter-btn" onclick="filterCategory('salgados')">Salgados Artisanal</button>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+            <!-- Produtos inseridos via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal do Carrinho -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCart()">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items">
+                <p>Seu carrinho está vazio.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total: <strong id="cart-total">R\$ 0,00</strong></p>
+                <button class="btn-primary" onclick="goToCheckout()">Finalizar Pedido via PIX</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Checkout / PIX -->
+    <div class="modal" id="pix-modal">
+        <div class="modal-content text-center">
+            <span class="close-btn" onclick="closePix()">&times;</span>
+            <h2>Pagamento Instantâneo via PIX</h2>
+            <p>Escaneie o QR Code abaixo para concluir o seu pedido:</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=CafeteriaGourmetPixSimulado" alt="QR Code PIX" class="qr-code">
+            <p><small>Chave PIX Aleatória: <strong>cafeteria-gourmet-ronaldo-pix-key</strong></small></p>
+            <button class="btn-success" onclick="confirmPayment()">Confirmar Pagamento</button>
+        </div>
+    </div>
+
+    <!-- Painel Administrativo do Lojista -->
+    <section class="container admin-section" id="admin">
+        <h2>Painel do Lojista — Gestão de Pedidos em Tempo Real</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th># Pedido</th>
+                    <th>Itens</th>
+                    <th>Total</th>
+                    <th>Status Pagamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="admin-orders">
+                <!-- Pedidos exibidos dinamicamente -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>Cafeteria Gourmet &copy; 2026 — Projeto PIT II | Aluno: Ronaldo de Souza Carvalho (RGM: 34104348)</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
